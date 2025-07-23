@@ -1,0 +1,30 @@
+body {
+    background-color: skyblue;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: aliceblue;
+}
+
+.digits {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.display {
+    padding: 1rem;
+    background-color: lightgray;
+}
+
+button {
+    width: 5em;
+    height: 5em;
+    padding: 0;
+}
