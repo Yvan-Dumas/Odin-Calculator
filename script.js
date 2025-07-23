@@ -41,6 +41,8 @@ function displayDigits(number){
 function displayClear() {
     display.textContent = "0";
     currentDisplay = "";
+    firstNumber = 0;
+    operator = '';
 }
 
 function setOperator(op) {
