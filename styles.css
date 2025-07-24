@@ -9,21 +9,33 @@ body {
 
 .container {
     background-color: #51EAEA;
-    padding: 2rem;
-    border-radius: 3rem;
+    padding: 1.2rem;
+    border-radius: 2.5rem;
+}
+
+
+#display,
+button {
+    background-color: #FFFDE1;
+    font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
 }
 
 #display {
-    padding: 1rem;
-    background-color: #FFFDE1;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 1.1rem;
+    font-weight: 600;
+    font-size: 2.3rem;
 }
 
 button {
-    width: 4em;
-    height: 4em;
-    color: #FFFDE1;
+    width: 4rem;
+    height: 4rem;
     background-color: #FB3569;
     border: 0px;
-    border-radius: 0.7rem;
-    margin: 0.1rem;
+    border-radius: 1rem;
+    margin: 0.2rem;
+    font-size: 2rem;
+    color: #FFFDE1;
 }
