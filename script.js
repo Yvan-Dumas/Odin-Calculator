@@ -33,28 +33,47 @@ function operate(op, a, b) {
 }
 
 // Display functions
-function displayDigits(number){
+function displayDigits(number) {
     currentDisplay += number;
     display.textContent = currentDisplay;
 }
 
 function displayClear() {
-    display.textContent = "0";
     currentDisplay = "";
-    firstNumber = 0;
-    operator = '';
+    firstNumber = null;
+    operator = null;
+    updateDisplay("0");
+}
+
+function updateDisplay(content) {
+    display.textContent = content;
 }
 
 function setOperator(op) {
+    // multiple operations
+    if (operator != null && firstNumber != null) {
+        firstNumber = operate(operator, firstNumber, parseFloat(currentDisplay));
+        updateDisplay(firstNumber)
+    } else {
+        firstNumber = parseFloat(currentDisplay);
+    }
     operator = op;
-    firstNumber = parseInt(currentDisplay);
-    displayClear();
+    currentDisplay="";
 }
 
+function calculateResult() {
+    if (operator && currentDisplay != "") {
+        const secondNumber = parseFloat(currentDisplay);
+        const result = operate(operator, firstNumber, secondNumber);
+        updateDisplay(result);
+    }
+    currentDisplay = "";
+    operator = null;
+}
 
 let currentDisplay = "";
-let firstNumber = 0;
-let operator = '';
+let firstNumber = null;
+let operator = null;
 
 for (let i = 0; i <= 9; i++) {
     document.querySelector(`#button${i}`).addEventListener("click", () => displayDigits(i));
@@ -66,10 +85,12 @@ const buttonAddition = document.querySelector("#addition");
 const buttonSubtraction = document.querySelector("#subtraction");
 const buttonMultiplication = document.querySelector("#multiplication");
 const buttonDivision = document.querySelector("#division");
+const buttonDot = document.querySelector("#dot");
 
 buttonClear.addEventListener("click", () => displayClear());
-buttonEqual.addEventListener("click", () => display.textContent = operate(operator, firstNumber, parseInt(currentDisplay)));
+buttonEqual.addEventListener("click", () => calculateResult());
 buttonAddition.addEventListener("click", () => setOperator('+'));
 buttonSubtraction.addEventListener("click", () => setOperator('-'));
 buttonMultiplication.addEventListener("click", () => setOperator('*'));
 buttonDivision.addEventListener("click", () => setOperator('/'));
+buttonDot.addEventListener("click", () => displayDigits("."))
