@@ -15,7 +15,7 @@ function divide(a, b) {
     if (b != 0) {
         return a / b;
     } else {
-        return "Error";
+        return "Error math";
     }
 }
 
@@ -53,19 +53,24 @@ function setOperator(op) {
     // multiple operations
     if (operator != null && firstNumber != null) {
         firstNumber = operate(operator, firstNumber, parseFloat(currentDisplay));
-        updateDisplay(firstNumber)
+        updateDisplay(Math.round(firstNumber * 100000) / 100000)
     } else {
         firstNumber = parseFloat(currentDisplay);
     }
     operator = op;
-    currentDisplay="";
+    currentDisplay = "";
 }
 
 function calculateResult() {
     if (operator && currentDisplay != "") {
         const secondNumber = parseFloat(currentDisplay);
         const result = operate(operator, firstNumber, secondNumber);
-        updateDisplay(result);
+        if (typeof (result) == "string") {
+            updateDisplay(result);
+        } else {
+            updateDisplay(Math.round(result * 100000) / 100000);
+        }
+
     }
     currentDisplay = "";
     operator = null;
