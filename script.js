@@ -34,9 +34,15 @@ function operate(op, a, b) {
 
 // Display functions
 function displayDigits(number) {
-    currentDisplay += number;
+    if (number === "." && currentDisplay.includes(".")) return;
+    if (number === "." && currentDisplay === "") {
+        currentDisplay = "0.";
+    } else {
+        currentDisplay += number;
+    }
     display.textContent = currentDisplay;
 }
+
 
 function displayClear() {
     currentDisplay = "";
