@@ -109,4 +109,23 @@ buttonAddition.addEventListener("click", () => setOperator('+'));
 buttonSubtraction.addEventListener("click", () => setOperator('-'));
 buttonMultiplication.addEventListener("click", () => setOperator('*'));
 buttonDivision.addEventListener("click", () => setOperator('/'));
-buttonDot.addEventListener("click", () => displayDigits("."))
+buttonDot.addEventListener("click", () => displayDigits("."));
+
+document.addEventListener("keydown", (event) => {
+    const key = event.key;
+
+    if (!isNaN(key)) {
+        // Si c'est un chiffre
+        displayDigits(key);
+    } else if (key === '.') {
+        displayDigits('.');
+    } else if (key === 'Backspace') {
+        backspace();
+    } else if (key === 'Escape') {
+        displayClear();
+    } else if (key === 'Enter' || key === '=') {
+        calculateResult();
+    } else if (['+', '-', '*', '/'].includes(key)) {
+        setOperator(key);
+    }
+});
