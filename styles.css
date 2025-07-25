@@ -46,7 +46,7 @@ button {
 
 button:hover {
     transform: scale(1.05);
-    cursor: grab;
+    cursor: pointer;
     background-color: #ff5683;
 }
 
@@ -59,3 +59,7 @@ button:active {
     margin-bottom: 1rem;
 }
 
+.groupOf2 {
+    display: flex;
+    justify-content: space-between;
+}
