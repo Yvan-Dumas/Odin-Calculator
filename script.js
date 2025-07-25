@@ -45,8 +45,17 @@ function displayClear() {
     updateDisplay("0");
 }
 
+function backspace() {
+    currentDisplay = currentDisplay.slice(0, currentDisplay.length-1)
+    updateDisplay(currentDisplay);
+}
+
 function updateDisplay(content) {
-    display.textContent = content;
+    if (content == "") {
+        display.textContent = "0"
+    } else {
+        display.textContent = content;
+    }
 }
 
 function setOperator(op) {
@@ -84,6 +93,7 @@ for (let i = 0; i <= 9; i++) {
     document.querySelector(`#button${i}`).addEventListener("click", () => displayDigits(i));
 }
 const buttonClear = document.querySelector("#clear");
+const buttonBackspace = document.querySelector("#buttonBackspace");
 const buttonEqual = document.querySelector("#equal");
 const display = document.querySelector("#display");
 const buttonAddition = document.querySelector("#addition");
@@ -93,6 +103,7 @@ const buttonDivision = document.querySelector("#division");
 const buttonDot = document.querySelector("#dot");
 
 buttonClear.addEventListener("click", () => displayClear());
+buttonBackspace.addEventListener("click", () => backspace())
 buttonEqual.addEventListener("click", () => calculateResult());
 buttonAddition.addEventListener("click", () => setOperator('+'));
 buttonSubtraction.addEventListener("click", () => setOperator('-'));
